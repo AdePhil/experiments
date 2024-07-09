@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 type CardProps = {
@@ -65,18 +66,18 @@ const sampleCards = [
 const StripCards = () => {
   const [cards, setCards] = useState(sampleCards);
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setCards((cards) => {
-  //       let [first, ...rest] = cards;
-  //       const newCards = rest.map((c) => ({ ...c, id: crypto.randomUUID() }));
-  //       return [...newCards, { ...first, id: crypto.randomUUID() }];
-  //     });
-  //   }, 3000);
-  //   return () => {
-  //     clearInterval(interval);
-  //   };
-  // }, []);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCards((cards) => {
+        let [first, ...rest] = cards;
+        const newCards = rest.map((c) => ({ ...c, id: crypto.randomUUID() }));
+        return [...newCards, { ...first, id: crypto.randomUUID() }];
+      });
+    }, 3000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
 
   const handleClick = () => {
     let [first, ...rest] = cards;
@@ -93,12 +94,12 @@ const StripCards = () => {
       <div className="max-w-[600px] min-h-screen w-full mx-auto ">
         <h1 className="pt-10 text-center text-2xl">Strip Cards</h1>
         <div className="flex justify-center mt-10 mb-[100px]">
-          <button
-            onClick={handleClick}
+          <Link
+            href="https://stripe.com/gb?utm_campaign=UK_en_Search_Brand_Stripe_EXA-2032860449&utm_medium=cpc&utm_source=google&ad_content=604272871169&utm_term=stripe&utm_matchtype=e&utm_adposition=&utm_device=m&gad_source=1&gbraid=0AAAAADKNRO6A0tC4eYyHUQ8B95watY66w&gclid=Cj0KCQjwsuSzBhCLARIsAIcdLm4Aguv2FxlN2gRk_tv6iGWBvlDSBijzUIftECfFwEaWiYK3ErbSAp4aAstUEALw_wcB#:~:text=Build%20a%20fintech%20offering%20with%20banking%2Das%2Da%2Dservice"
             className="flex h-[48px] rounded-[8px] p-[1.4rem] border   border-slate-300 justify-center items-center  hover:bg-zinc-100 transition-all duration-300 ease-in-out"
           >
-            Animate
-          </button>
+            source
+          </Link>
         </div>
         <div className="flex justify-center items-center">
           <div
