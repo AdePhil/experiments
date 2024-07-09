@@ -22,7 +22,7 @@ const projects = [
 
 const Page = () => {
   return (
-    <main className=" min-h-screen p-24 bg-[#FDFDFC]">
+    <main className=" min-h-screen px-5 py-24 bg-[#FDFDFC]">
       <div className="max-w-[600px] mx-auto">
         <div className=" ml-4">
           <h1 className="text-4xl">Design Engineering Library</h1>
