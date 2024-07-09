@@ -46,43 +46,50 @@ const sampleCards = [
     id: "1",
     color: "bg-black",
     image_name: "card1.svg",
+    new: false,
   },
   {
     id: "2",
     color: "bg-orange-200",
     image_name: "card2.svg",
+    new: false,
   },
   {
     id: "3",
     color: "bg-slate-400",
     image_name: "card3.svg",
+    new: true,
   },
 ];
 
 const StripCards = () => {
   const [cards, setCards] = useState(sampleCards);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCards((cards) => {
-        let [first, ...rest] = cards;
-        const newCards = rest.map((c) => ({ ...c, id: crypto.randomUUID() }));
-        return [...newCards, { ...first, id: crypto.randomUUID() }];
-      });
-    }, 3000);
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setCards((cards) => {
+  //       let [first, ...rest] = cards;
+  //       const newCards = rest.map((c) => ({ ...c, id: crypto.randomUUID() }));
+  //       return [...newCards, { ...first, id: crypto.randomUUID() }];
+  //     });
+  //   }, 3000);
+  //   return () => {
+  //     clearInterval(interval);
+  //   };
+  // }, []);
 
   const handleClick = () => {
     let [first, ...rest] = cards;
-    const newCards = rest.map((c) => ({ ...c, id: crypto.randomUUID() }));
-    setCards([...newCards, { ...first, id: crypto.randomUUID() }]);
+    const newCards = rest.map((c) => ({
+      ...c,
+      id: crypto.randomUUID(),
+      new: false,
+    }));
+    setCards([...newCards, { ...first, id: crypto.randomUUID(), new: true }]);
   };
 
   return (
-    <div className=" h-full bg-[#F7F9FC]">
+    <div className=" h-full bg-[#F7F9FC] text-black">
       <div className="max-w-[600px] min-h-screen w-full mx-auto ">
         <h1 className="pt-10 text-center text-2xl">Strip Cards</h1>
         <div className="flex justify-center mt-10 mb-[100px]">
@@ -100,13 +107,13 @@ const StripCards = () => {
               perspective: "1200px",
             }}
           >
-            <AnimatePresence initial={false} mode="popLayout">
+            <AnimatePresence initial={true}>
               {cards.map((card, i) => {
                 return (
                   <motion.div
                     initial={{
                       y: 0,
-                      opacity: i === cards.length - 1 ? 0.98 : 1,
+                      opacity: 1,
                     }}
                     animate={{
                       y: 80,
@@ -116,7 +123,7 @@ const StripCards = () => {
                       rotateX: i === 0 ? -100 : 0,
                       scale: i === 0 ? 0.95 : 1,
                       zIndex: i === 0 ? 100 : cards.length - i + 1,
-                      opacity: i === 0 ? 0 : 1,
+                      opacity: 0,
                       transition: {
                         ease: "easeInOut",
                         duration: 0.8,
@@ -125,7 +132,7 @@ const StripCards = () => {
                     transition={{
                       ease: "easeInOut",
                       duration: 0.6,
-                      delay: 0.1,
+                      // delay: 0.1,
                     }}
                     key={card.id}
                     style={{
