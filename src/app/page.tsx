@@ -8,7 +8,7 @@ const projects = [
     source:
       "https://stripe.com/gb?utm_campaign=UK_en_Search_Brand_Stripe_EXA-2032860449&utm_medium=cpc&utm_source=google&ad_content=604272871169&utm_term=stripe&utm_matchtype=e&utm_adposition=&utm_device=m&gad_source=1&gbraid=0AAAAADKNRO6A0tC4eYyHUQ8B95watY66w&gclid=Cj0KCQjwsuSzBhCLARIsAIcdLm4Aguv2FxlN2gRk_tv6iGWBvlDSBijzUIftECfFwEaWiYK3ErbSAp4aAstUEALw_wcB#:~:text=Build%20a%20fintech%20offering%20with%20banking%2Das%2Da%2Dservice",
     description:
-      "This animation shows a list of cards that translates in, with the last card falling, fading out and translating back in. This signifies that multiple cards can be issues and expired cards can the renewed.",
+      "This animation shows a list of cards that translates in, with the last card falling, fading out and translating back in. This signifies that multiple cards can be issued and expired cards can the renewed.",
     link: "/stripe-cards",
   },
   {
